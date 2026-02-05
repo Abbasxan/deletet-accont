@@ -3,61 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesab Silmə - Musiqi Duellosu</title>
+    <title>Musiqi Duellosu | Hesab İdarəetməsi</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            line-height: 1.6;
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        :root {
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007a;
+            --text: #ffffff;
         }
-        h1 { color: #15803D; }
-        .step { margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px; }
-        .warning { color: #d32f2f; font-weight: bold; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #000;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Arxa fon effektləri */
+        .orb {
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: drift 20s infinite alternate;
+        }
+        .orb-1 { background: var(--neon-blue); top: -10%; left: -10%; }
+        .orb-2 { background: var(--neon-pink); bottom: -10%; right: -10%; animation-delay: -5s; }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 50px) scale(1.2); }
+        }
+
+        .main-card {
+            width: 95%;
+            max-width: 450px;
+            background: var(--glass);
+            backdrop-filter: blur(25px) saturate(150%);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Musiqi Visualizer Effekti */
+        .visualizer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+        .bar {
+            width: 4px;
+            background: var(--neon-blue);
+            border-radius: 2px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        .bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+        .bar:nth-child(3) { animation-delay: 0.4s; height: 100%; background: var(--neon-pink); }
+        .bar:nth-child(4) { animation-delay: 0.1s; height: 40%; }
+
+        @keyframes bounce {
+            0%, 100% { height: 30%; }
+            50% { height: 100%; }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* İnteraktiv Addımlar */
+        .step-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .step-pill:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.05) rotateX(10deg);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 20px rgba(0,210,255,0.2);
+        }
+
+        .icon-box {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .info h3 { font-size: 0.9rem; margin-bottom: 2px; }
+        .info p { font-size: 0.75rem; color: #aaa; }
+
+        /* Məlumat Silinmə Paneli */
+        .warning-zone {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(255,0,122,0.1), transparent);
+            border: 1px solid rgba(255,0,122,0.2);
+        }
+
+        .warning-zone header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-pink);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .data-chip {
+            font-size: 0.7rem;
+            color: #eee;
+            background: rgba(0,0,0,0.3);
+            padding: 6px 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .shimmer-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 18px;
+            border: none;
+            background: #fff;
+            color: #000;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-btn::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: 0.5s;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 150%; }
+        }
+
     </style>
 </head>
 <body>
-    <h1>Hesabınızı Silmək</h1>
-    <p><strong>Musiqi Duellosu</strong> tətbiqində hesabınızı silmək üçün aşağıdakı addımları izləyin:</p>
-    
-    <div class="step">
-        <h3>Addım 1: Tətbiqi açın</h3>
-        <p>Musiqi Duellosu tətbiqini mobil cihazınızda açın.</p>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="main-card">
+        <div class="visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <h1>Hesabı Sıfırla</h1>
+
+        <div class="step-pill">
+            <div class="icon-box">01</div>
+            <div class="info">
+                <h3>Terminal Girişi</h3>
+                <p>Musiqi Duellosu tətbiqini açın</p>
+            </div>
+        </div>
+
+        <div class="step-pill">
+            <div class="icon-box">02</div>
+            <div class="info">
+                <h3>Sistem Ayarları</h3>
+                <p>Profil > Tənzimləmələr bölməsi</p>
+            </div>
+        </div>
+
+        <div class="step-pill">
+            <div class="icon-box">03</div>
+            <div class="info">
+                <h3>Final Təsdiqi</h3>
+                <p>Hesabı sil əmri ilə prosesi bitirin</p>
+            </div>
+        </div>
+
+        <div class="warning-zone">
+            <header>⚡ Bütün Data Silinir</header>
+            <div class="data-grid">
+                <div class="data-chip">Musiqi Xalları</div>
+                <div class="data-chip">Nailiyyətlər</div>
+                <div class="data-chip">Coin Balansı</div>
+                <div class="data-chip">Dost Siyahısı</div>
+            </div>
+        </div>
+
+        <button class="shimmer-btn">Davam Etmək İstəmirəm</button>
+        
+        <p style="text-align: center; font-size: 0.7rem; color: #555; margin-top: 20px;">
+            Məlumatlar 30 gün sonra əbədi olaraq silinəcək.
+        </p>
     </div>
-    
-    <div class="step">
-        <h3>Addım 2: Profil səhifəsinə gedin</h3>
-        <p>Ana menüdə "Profil" (person ikonu) düyməsinə basın.</p>
-    </div>
-    
-    <div class="step">
-        <h3>Addım 3: Ayarlar</h3>
-        <p>Profil səhifəsində "Ayarlar" bölməsinə gedin və "Hesabı Sil" seçiminə basın.</p>
-    </div>
-    
-    <div class="step">
-        <h3>Addım 4: Təsdiqləyin</h3>
-        <p>Təsdiq dialoqunda "Bəli, hesabı sil" düyməsinə basın.</p>
-    </div>
-    
-    <p class="warning">⚠️ Diqqət: Hesabınızı silmək geri alına bilməz!</p>
-    
-    <h2>Silinəcək Məlumatlar:</h2>
-    <ul>
-        <li>Profil məlumatları (istifadəçi adı, e-poçt, profil şəkli)</li>
-        <li>Bütün oyun statistikaları (xallar, nailiyyətlər, oynadığınız oyunlar)</li>
-        <li>Oyun içi valyuta balansı</li>
-        <li>Alınmış çərçivələr və nişanlar</li>
-        <li>Reytinq cədvəlindəki yeriniz</li>
-    </ul>
-    
-    <h2>Saxlanılacaq Məlumatlar:</h2>
-    <p>Anonim reytinq statistikaları (istifadəçi adı olmadan) məlumat analizi üçün saxlanıla bilər.</p>
-    
-    <p><strong>Saxlanma Müddəti:</strong> Hesab silindikdən sonra bütün məlumatlar 30 gün ərzində tamamilə silinir.</p>
-    
-    <hr>
-    <p><em>Əgər hesab silmə ilə bağlı suallarınız varsa, bizimlə əlaqə saxlayın.</em></p>
+
 </body>
 </html>
