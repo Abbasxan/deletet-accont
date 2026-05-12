@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности - Pure Guard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-info span {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .content {
+            margin-top: 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        h2 {
+            font-size: 1.3em;
+            color: #000;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-left: 4px solid #007AFF;
+            padding-left: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #555;
+        }
+        
+        .section-number {
+            font-weight: 600;
+            color: #007AFF;
+        }
+        
+        .highlight {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #007AFF;
+        }
+        
+        .contacts {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            margin-right: 10px;
+            color: #333;
+            min-width: 100px;
+        }
+        
+        .contact-value {
+            color: #007AFF;
+            text-decoration: none;
+        }
+        
+        .contact-value:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.15em;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Политика конфиденциальности</h1>
+            <div class="meta-info">
+                <span>
+                    <span class="meta-label">Дата вступления в силу:</span>
+                    <span>1 мая 2025</span>
+                </span>
+                <span>
+                    <span class="meta-label">Разработчик:</span>
+                    <span>Neon Group</span>
+                </span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2><span class="section-number">1.</span> ДАННЫЕ, КОТОРЫЕ МЫ НЕ СОБИРАЕМ</h2>
+                <p>
+                    Pure Guard не собирает, не хранит и не передаёт никакие персональные данные на внешние серверы. Весь анализ контента выполняется исключительно на вашем устройстве. Мы не имеем доступа к вашей истории просмотров, паролям, сообщениям, фотографиям или любой другой личной информации.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">2.</span> СЛУЖБА СПЕЦИАЛЬНЫХ ВОЗМОЖНОСТЕЙ</h2>
+                <p>
+                    Pure Guard использует службу специальных возможностей Android только для чтения URL-адресов в поддерживаемых браузерах и обнаружения активности приложений в реальном времени. Эти данные никогда не покидают ваше устройство.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">3.</span> ЛОКАЛЬНОЕ ХРАНЕНИЕ ДАННЫХ</h2>
+                <p>
+                    Все настройки, чёрные и белые списки, ключевые слова и журналы защиты хранятся локально на вашем устройстве в защифрованной базе данных.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">4.</span> СЕРВИСЫ FIREBASE</h2>
+                <p>
+                    Pure Guard использует Firebase Firestore исключительно для загрузки обновлённых баз угроз. Никакие персональные данные не загружаются в Firebase. Аналитика и отчёты об ошибках не собираются.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">5.</span> СТОРОННИЕ СЕРВИСЫ</h2>
+                <p>
+                    Pure Guard не содержит рекламных SDK, трекеров аналитики или SDK социальных сетей. Приложение не содержит рекламу и никогда не будет.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">6.</span> КОНФИДЕНЦИАЛЬНОСТЬ ДЕТЕЙ</h2>
+                <p>
+                    Pure Guard предназначен для использования родителями для защиты своих детей. Прило��ение не собирает данные от детей любого возраста.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">7.</span> БЕЗОПАСНОСТЬ ДАННЫХ</h2>
+                <p>
+                    Защита ПИН-кодом использует хеширование SHA-256. Все настройки хранятся в Android DataStore с шифрованием на уровне ОС.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">8.</span> ВАШИ ПРАВА</h2>
+                <p>
+                    Поскольку мы не собираем персональные данные, удалять или экспортировать нечего. Все ваши данные находятся под вашим полным контролем.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">9.</span> ИЗМЕНЕНИЯ В ПОЛИТИКЕ</h2>
+                <p>
+                    Мы можем обновлять эту политику. Изменения будут отражены в обновлениях приложения.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2><span class="section-number">10.</span> КОНТАКТЫ</h2>
+                <div class="contacts">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:neongroupmmc@gmail.com" class="contact-value">neongroupmmc@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Telegram:</span>
+                        <a href="https://t.me/PureGuardApp" class="contact-value">@PureGuardApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Neon Group. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
